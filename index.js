@@ -15,9 +15,11 @@ app.use(express.json())
 
 const routerPacientes = require("./src/api/routes/pacientes.routes")
 const routerUsuarios = require("./src/api/routes/usuarios.routes") 
+const routerHabitaciones = require("./src/api/routes/habitaciones.routes") 
 
 app.use("/pacientesBase", routerPacientes)
 app.use("/usuariosBase", routerUsuarios)
+app.use("/habitacionesBase", routerHabitaciones)
 
 app.listen(PORT, ()=>{
     console.log(`Server URL: http://localhost:${PORT}`)
