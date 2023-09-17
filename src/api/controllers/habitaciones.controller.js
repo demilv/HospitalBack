@@ -1,4 +1,4 @@
-const Room = require("../models/rooms.model");
+const Room = require("../models/habitaciones.model");
 
 //Devuelve los habitaciones
 const getAllRooms = async(req, res) =>{

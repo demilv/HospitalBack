@@ -1,5 +1,5 @@
 const express = require('express');
-const {getAllRooms, setNewRoom, updateRoom, deleteRoom} = require('../controllers/rooms.controller');
+const {getAllRooms, setNewRoom, updateRoom, deleteRoom} = require('../controllers/habitaciones.controller');
 const router = express.Router();
 
 router.get("/", getAllRooms)
