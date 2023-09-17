@@ -7,8 +7,7 @@ const Schema = mongoose.Schema;
 const pacientesSchema = new Schema(
     {
         nombre: {type: String, required: true},
-        alaclinica: {type: Number, required: true},
-        habitacion: {type: Number, required: true},
+        habitacion:[{type: Schema.Types.ObjectId, ref: "habitaciones"}],
         telefono: {type: Number, required: true},       
         descripcion: {type: String, required: true},        
     },{

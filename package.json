@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
+    "habseed": "node ./src/seeds/habitaciones.seed.js",
     "pacseed": "node ./src/seeds/pacientes.seed.js",
     "userseed": "node ./src/seeds/usuarios.seed.js",
     "test": "echo \"Error: no test specified\" && exit 1"
