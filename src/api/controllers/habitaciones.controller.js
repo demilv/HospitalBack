@@ -59,7 +59,7 @@ const deleteRoom = async(req, res) =>{
 const wingRoom = async (req, res) => {
     try {
         const { ala } = req.params;
-        const wingRooms = await Room.find({ ala: ala });
+        const wingRooms = await Room.find({ ala: ala }).sort({numero: 1});
         return res.status(200).json(wingRooms);
     } catch (error) {       
         return res.status(500).json(error);
