@@ -55,4 +55,16 @@ const deleteRoom = async(req, res) =>{
     }
 }
 
-module.exports = {getAllRooms, setNewRoom, updateRoom, deleteRoom};
+//Pedir habitacion de un ala
+const wingRoom = async (req, res) => {
+    try {
+        const { ala } = req.params;
+        const wingRooms = await Room.find({ ala: ala });
+        return res.status(200).json(wingRooms);
+    } catch (error) {       
+        return res.status(500).json(error);
+    }
+}
+
+
+module.exports = {getAllRooms, setNewRoom, updateRoom, deleteRoom, wingRoom};
