@@ -1,4 +1,5 @@
 const Paciente = require("../models/pacientes.model");
+const Habitacion = require("../models/habitaciones.model");
 
 //Devuelve los pacientes
 const getAllPacientes = async(req, res) =>{
@@ -14,10 +15,20 @@ const getAllPacientes = async(req, res) =>{
 const setNewPaciente = async(req, res) => {
     try{
         const newPaciente = new Paciente(req.body);
+        const allHabitaciones = await Habitacion.find();       
+        const habitacionesNoOcupadas = allHabitaciones.filter(habitacion => !habitacion.ocupada);
+
+        if (habitacionesNoOcupadas.length > 0) {
+            const habitacionAleatoria = habitacionesNoOcupadas[Math.floor(Math.random() * habitacionesNoOcupadas.length)];
+            newPaciente.habitacion = habitacionAleatoria._id;
+            await Habitacion.updateOne({ _id: habitacionAleatoria._id }, { ocupada: true });
+        } else {
+            console.log('No hay habitaciones disponibles');
+        }
+            
         const createdPaciente = await newPaciente.save();
         try {
-            console.log("Datos recibidos:", req.body); // Agrega esta línea para verificar los datos recibidos
-            // Resto del código para guardar el paciente...
+            console.log("Datos recibidos:", req.body); 
         } catch (error) {
             // Manejo de errores...
         }
