@@ -11,6 +11,17 @@ const getAllPacientes = async(req, res) =>{
     }
 };
 
+//Devuelve los pacientes
+const getOnePaciente = async(req, res) =>{
+    try{
+        const {id} = req.params
+        const FoundPaciente = await Paciente.findById(id)
+        return res.json(FoundPaciente)
+    }catch(error){
+        console.log(error);
+    }
+};
+
 //Añadir paciente
 const setNewPaciente = async(req, res) => {
     try{
@@ -66,4 +77,4 @@ const deletePaciente = async(req, res) =>{
     }
 }
 
-module.exports = {getAllPacientes, setNewPaciente, updatePaciente, deletePaciente};
+module.exports = {getAllPacientes, setNewPaciente, updatePaciente, deletePaciente, getOnePaciente};
