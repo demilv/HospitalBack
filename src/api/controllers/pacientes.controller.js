@@ -49,6 +49,7 @@ const setNewPaciente = async(req, res) => {
         return res.status(500).json(error)
     }
 }
+
 //Update de paciente
 const updatePaciente = async(req, res) =>{
     try{
@@ -63,6 +64,7 @@ const updatePaciente = async(req, res) =>{
 
     }
 }
+
 //Delete de paciente
 const deletePaciente = async(req, res) =>{
     try {

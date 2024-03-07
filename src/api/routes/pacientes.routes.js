@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get("/", getAllPacientes)
 
-router.get("/OnePaciente/:id", getOnePaciente)
+router.get("/onePaciente/:id", getOnePaciente)
 
 router.post("/newPaciente", setNewPaciente)
 

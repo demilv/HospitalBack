@@ -1,4 +1,4 @@
-//Modelo de Usuarioss de Fitness
+//Modelo de Usuarioss
 
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
