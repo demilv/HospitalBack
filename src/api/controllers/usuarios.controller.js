@@ -1,4 +1,5 @@
 const Usuario = require("../models/usuarios.model");
+const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 //Devuelve los usuarios
@@ -62,4 +63,28 @@ const deleteUsuario = async(req, res) =>{
     }
 }
 
-module.exports = {getAllUsuarios, setNewUsuario, updateUsuario, deleteUsuario};
+//Comprobacion de los datos del login
+const Login = async (req, res) => {
+    const { username, password } = req.body;
+
+    try {
+        const user = await Usuario.findOne({ nombreusuario });
+
+        if (!user) {
+            return res.status(401).json({ message: 'Credenciales inválidas' });
+        }
+
+        if (!bcrypt.compareSync(password, user.password)) {
+            return res.status(401).json({ message: 'Credenciales inválidas' });
+        }
+
+        const token = jwt.sign({ userId: user._id }, 'logueado', { expiresIn: '1h' });
+
+        return res.json({ token });
+    } catch (error) {
+        console.error('Error al iniciar sesión:', error);
+        return res.status(500).json({ message: 'Error al iniciar sesión' });
+    }
+};
+
+module.exports = {getAllUsuarios, setNewUsuario, updateUsuario, deleteUsuario, Login};
