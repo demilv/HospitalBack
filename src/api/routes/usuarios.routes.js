@@ -10,7 +10,7 @@ router.put("/upUser/:id", updateUsuario)
 
 router.delete("/delUser/:id", deleteUsuario)
 
-router.get("/Login", Login)
+router.post("/Login", Login)
 
 
 
